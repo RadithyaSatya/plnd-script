@@ -1,7 +1,7 @@
-# PLND Scripts (Roamer & Tether)
+# PLND Scripts (Slr & Tether)
 
 Dokumentasi singkat untuk dua script pendaratan presisi:
-- `plnd_roamer.py` (varian roamer)
+- `plnd_slr.py` (varian slr)
 - `plnd_tether.py` (varian tether)
 
 ## Ringkas
@@ -9,7 +9,7 @@ Kedua script:
 - Membaca video dari `rpicam-vid` (libcamera) dan mendeteksi ArUco.
 - Mengirim data `LANDING_TARGET` ke autopilot via MAVLink.
 - Mengendalikan LED/strobe via serial (`/dev/ttyUSB0`).
-- Menulis log ke file: `plnd_roamer.log` atau `plnd_tether.log`.
+- Menulis log ke file: `plnd_slr.log` atau `plnd_tether.log`.
 
 ## Requirements (sesuai script)
 Python packages:
@@ -40,7 +40,7 @@ pip install -r requirements.txt
 2) Port serial:
    - Strobe LED: default `/dev/ttyUSB0`
    - MAVLink:
-     - Roamer: default `/dev/ttyS0` (baud 921600)
+     - Slr: default `/dev/ttyS0` (baud 921600)
      - Tether: default `/dev/ttyAMA4` (baud 921600)
    - Catatan: nama port serial bisa berbeda di setiap drone (tergantung wiring/OS/USB).
      Sesuaikan nilai port di script jika perangkat Anda memakai port lain.
@@ -49,7 +49,7 @@ pip install -r requirements.txt
    - Dictionary: `aruco.DICT_ARUCO_MIP_36H12`
    - Ukuran dan posisi marker sudah di-hardcode pada masing-masing script.
    - Gambaran posisi (satuan mm, koordinat relatif ke marker utama):
-     - Roamer:
+     - Slr:
        - ID 5: size 50, pos [0, 0, 0] (marker utama)
        - ID 4: size 70, pos [0, 2.5, 0]
        - ID 6: size 70, pos [0, -3.5, 0]
@@ -61,9 +61,9 @@ pip install -r requirements.txt
        - ID 13: size 20, pos [0, 58, 73]
 
 ## Menjalankan
-Roamer:
+Slr:
 ```
-python3 plnd_roamer.py
+python3 plnd_slr.py
 ```
 
 Tether:
